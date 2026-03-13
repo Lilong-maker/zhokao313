@@ -1,0 +1,376 @@
+2026-03-13T09:26:03.541+0800	WARN	cache/disk_cache.go:193	read Config Content failed. cause file doesn't exist, file path: ./nacos/cache\config\order@@dev@@_failover.
+2026-03-13T09:26:03.568+0800	INFO	rpc/rpc_client.go:157	init rpc client for name %!(EXTRA string=config-0-beefac7a-d329-4b01-a1a6-7ce3711b817d)
+2026-03-13T09:26:03.568+0800	INFO	rpc/rpc_client.go:166	get app conn labels from client config map[] 
+2026-03-13T09:26:03.568+0800	INFO	rpc/rpc_client.go:168	get app conn labels from env map[] 
+2026-03-13T09:26:03.568+0800	INFO	rpc/rpc_client.go:171	final app conn labels : map[] 
+2026-03-13T09:26:03.568+0800	INFO	rpc/rpc_client.go:327	[RpcClient.Start] config-0-beefac7a-d329-4b01-a1a6-7ce3711b817d try to connect to server on start up, server: {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}
+2026-03-13T09:26:03.572+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T09:26:03.572+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T09:26:03.572+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T09:26:03.598+0800	INFO	util/common.go:96	Local IP:172.20.32.1
+2026-03-13T09:26:03.892+0800	INFO	rpc/rpc_client.go:337	config-0-beefac7a-d329-4b01-a1a6-7ce3711b817d success to connect to server {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848} on start up, connectionId=1773365164128_39.144.152.172_45994
+2026-03-13T09:26:03.892+0800	INFO	rpc/rpc_client.go:487	config-0-beefac7a-d329-4b01-a1a6-7ce3711b817d notify connected event to listeners , connectionId=1773365164128_39.144.152.172_45994
+2026-03-13T09:26:03.892+0800	INFO	config_client/config_connection_event_listener.go:38	[ConfigConnectionEventListener] connect to config server for taskId: 0
+2026-03-13T09:26:03.967+0800	WARN	cache/disk_cache.go:155	read cache file Config Encrypted Data Key failed. cause file doesn't exist, file path: ./nacos/cache\config\encrypted-data-key\order@@dev@@.: file not exist
+2026-03-13T09:43:36.867+0800	WARN	cache/disk_cache.go:193	read Config Content failed. cause file doesn't exist, file path: ./nacos/cache\config\order@@dev@@_failover.
+2026-03-13T09:43:36.890+0800	INFO	rpc/rpc_client.go:157	init rpc client for name %!(EXTRA string=config-0-074169c4-637b-4fc4-ab4f-2ff485f02e7a)
+2026-03-13T09:43:36.891+0800	INFO	rpc/rpc_client.go:166	get app conn labels from client config map[] 
+2026-03-13T09:43:36.891+0800	INFO	rpc/rpc_client.go:168	get app conn labels from env map[] 
+2026-03-13T09:43:36.891+0800	INFO	rpc/rpc_client.go:171	final app conn labels : map[] 
+2026-03-13T09:43:36.891+0800	INFO	rpc/rpc_client.go:327	[RpcClient.Start] config-0-074169c4-637b-4fc4-ab4f-2ff485f02e7a try to connect to server on start up, server: {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}
+2026-03-13T09:43:36.891+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T09:43:36.891+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T09:43:36.891+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T09:43:36.912+0800	INFO	util/common.go:96	Local IP:172.20.32.1
+2026-03-13T09:43:37.177+0800	INFO	rpc/rpc_client.go:337	config-0-074169c4-637b-4fc4-ab4f-2ff485f02e7a success to connect to server {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848} on start up, connectionId=1773366217191_39.144.152.172_45995
+2026-03-13T09:43:37.177+0800	INFO	rpc/rpc_client.go:487	config-0-074169c4-637b-4fc4-ab4f-2ff485f02e7a notify connected event to listeners , connectionId=1773366217191_39.144.152.172_45995
+2026-03-13T09:43:37.177+0800	INFO	config_client/config_connection_event_listener.go:38	[ConfigConnectionEventListener] connect to config server for taskId: 0
+2026-03-13T09:43:37.248+0800	WARN	cache/disk_cache.go:155	read cache file Config Encrypted Data Key failed. cause file doesn't exist, file path: ./nacos/cache\config\encrypted-data-key\order@@dev@@.: file not exist
+2026-03-13T10:11:51.906+0800	WARN	cache/disk_cache.go:193	read Config Content failed. cause file doesn't exist, file path: ./nacos/cache\config\order@@dev@@_failover.
+2026-03-13T10:11:51.932+0800	INFO	rpc/rpc_client.go:157	init rpc client for name %!(EXTRA string=config-0-84b071bf-384e-4a1a-8272-72ace003de4c)
+2026-03-13T10:11:51.932+0800	INFO	rpc/rpc_client.go:166	get app conn labels from client config map[] 
+2026-03-13T10:11:51.932+0800	INFO	rpc/rpc_client.go:168	get app conn labels from env map[] 
+2026-03-13T10:11:51.932+0800	INFO	rpc/rpc_client.go:171	final app conn labels : map[] 
+2026-03-13T10:11:51.932+0800	INFO	rpc/rpc_client.go:327	[RpcClient.Start] config-0-84b071bf-384e-4a1a-8272-72ace003de4c try to connect to server on start up, server: {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}
+2026-03-13T10:11:51.932+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:11:51.932+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:11:51.932+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:11:51.952+0800	INFO	util/common.go:96	Local IP:172.20.32.1
+2026-03-13T10:11:52.357+0800	INFO	rpc/rpc_client.go:337	config-0-84b071bf-384e-4a1a-8272-72ace003de4c success to connect to server {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848} on start up, connectionId=1773367912034_39.144.152.172_45997
+2026-03-13T10:11:52.357+0800	INFO	rpc/rpc_client.go:487	config-0-84b071bf-384e-4a1a-8272-72ace003de4c notify connected event to listeners , connectionId=1773367912034_39.144.152.172_45997
+2026-03-13T10:11:52.357+0800	INFO	config_client/config_connection_event_listener.go:38	[ConfigConnectionEventListener] connect to config server for taskId: 0
+2026-03-13T10:11:52.451+0800	WARN	cache/disk_cache.go:155	read cache file Config Encrypted Data Key failed. cause file doesn't exist, file path: ./nacos/cache\config\encrypted-data-key\order@@dev@@.: file not exist
+2026-03-13T10:15:37.151+0800	WARN	cache/disk_cache.go:193	read Config Content failed. cause file doesn't exist, file path: ./nacos/cache\config\order@@dev@@_failover.
+2026-03-13T10:15:37.173+0800	INFO	rpc/rpc_client.go:157	init rpc client for name %!(EXTRA string=config-0-16f257c5-7324-4b02-854d-6c64c7f0205f)
+2026-03-13T10:15:37.173+0800	INFO	rpc/rpc_client.go:166	get app conn labels from client config map[] 
+2026-03-13T10:15:37.173+0800	INFO	rpc/rpc_client.go:168	get app conn labels from env map[] 
+2026-03-13T10:15:37.173+0800	INFO	rpc/rpc_client.go:171	final app conn labels : map[] 
+2026-03-13T10:15:37.173+0800	INFO	rpc/rpc_client.go:327	[RpcClient.Start] config-0-16f257c5-7324-4b02-854d-6c64c7f0205f try to connect to server on start up, server: {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}
+2026-03-13T10:15:37.174+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:15:37.174+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:15:37.174+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:15:37.198+0800	INFO	util/common.go:96	Local IP:172.20.32.1
+2026-03-13T10:15:37.478+0800	INFO	rpc/rpc_client.go:337	config-0-16f257c5-7324-4b02-854d-6c64c7f0205f success to connect to server {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848} on start up, connectionId=1773368137195_39.144.152.172_45998
+2026-03-13T10:15:37.478+0800	INFO	rpc/rpc_client.go:487	config-0-16f257c5-7324-4b02-854d-6c64c7f0205f notify connected event to listeners , connectionId=1773368137195_39.144.152.172_45998
+2026-03-13T10:15:37.478+0800	INFO	config_client/config_connection_event_listener.go:38	[ConfigConnectionEventListener] connect to config server for taskId: 0
+2026-03-13T10:15:37.589+0800	WARN	cache/disk_cache.go:155	read cache file Config Encrypted Data Key failed. cause file doesn't exist, file path: ./nacos/cache\config\encrypted-data-key\order@@dev@@.: file not exist
+2026-03-13T10:19:06.297+0800	WARN	cache/disk_cache.go:193	read Config Content failed. cause file doesn't exist, file path: ./nacos/cache\config\order@@dev@@_failover.
+2026-03-13T10:19:06.321+0800	INFO	rpc/rpc_client.go:157	init rpc client for name %!(EXTRA string=config-0-5eef5393-6b78-4932-bd98-90e16d237b30)
+2026-03-13T10:19:06.321+0800	INFO	rpc/rpc_client.go:166	get app conn labels from client config map[] 
+2026-03-13T10:19:06.321+0800	INFO	rpc/rpc_client.go:168	get app conn labels from env map[] 
+2026-03-13T10:19:06.321+0800	INFO	rpc/rpc_client.go:171	final app conn labels : map[] 
+2026-03-13T10:19:06.321+0800	INFO	rpc/rpc_client.go:327	[RpcClient.Start] config-0-5eef5393-6b78-4932-bd98-90e16d237b30 try to connect to server on start up, server: {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}
+2026-03-13T10:19:06.321+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:19:06.321+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:19:06.321+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:19:06.341+0800	INFO	util/common.go:96	Local IP:172.20.32.1
+2026-03-13T10:19:06.652+0800	INFO	rpc/rpc_client.go:337	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 success to connect to server {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848} on start up, connectionId=1773368346300_39.144.152.172_46000
+2026-03-13T10:19:06.652+0800	INFO	rpc/rpc_client.go:487	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 notify connected event to listeners , connectionId=1773368346300_39.144.152.172_46000
+2026-03-13T10:19:06.652+0800	INFO	config_client/config_connection_event_listener.go:38	[ConfigConnectionEventListener] connect to config server for taskId: 0
+2026-03-13T10:19:06.709+0800	WARN	cache/disk_cache.go:155	read cache file Config Encrypted Data Key failed. cause file doesn't exist, file path: ./nacos/cache\config\encrypted-data-key\order@@dev@@.: file not exist
+2026-03-13T10:38:47.522+0800	ERROR	rpc/rpc_client.go:526	client sendHealthCheck failed,err=rpc error: code = DeadlineExceeded desc = context deadline exceeded
+2026-03-13T10:38:47.522+0800	INFO	rpc/rpc_client.go:512	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 server healthy check fail, currentConnection=1773368346300_39.144.152.172_46000
+2026-03-13T10:38:47.522+0800	INFO	rpc/rpc_client.go:427	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 try to re connect to a new server, server is not appointed, will choose a random server.
+2026-03-13T10:38:47.522+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:47.522+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:47.522+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:50.522+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:50.522+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:50.522+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:53.523+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 1 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = DeadlineExceeded desc = context deadline exceeded while waiting for connections to become ready
+2026-03-13T10:38:53.623+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:53.623+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:53.623+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:53.628+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 2 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:38:53.828+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:53.828+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:53.828+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:53.832+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 3 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:38:54.132+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:54.132+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:54.132+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:54.135+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 4 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:38:54.535+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:54.535+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:54.535+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:54.537+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 5 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:38:55.038+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:55.038+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:55.038+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:55.041+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 6 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:38:55.642+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:55.642+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:55.642+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:55.644+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 7 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:38:56.345+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:56.345+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:56.345+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:56.350+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 8 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:38:57.150+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:57.150+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:57.150+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:57.152+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 9 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:38:58.053+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:58.053+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:58.053+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:58.057+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 10 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:38:59.057+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:38:59.057+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:38:59.057+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:38:59.062+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 11 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:00.162+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:00.162+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:00.162+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:00.165+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 12 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:01.365+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:01.365+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:01.365+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:01.368+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 13 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:02.669+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:02.669+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:02.669+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:02.671+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 14 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:04.071+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:04.071+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:04.071+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:04.074+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 15 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:05.574+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:05.574+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:05.574+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:05.576+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 16 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:05.918+0800	ERROR	rpc/grpc_client.go:280	connectionId 1773368346300_39.144.152.172_46000 received error event, isRunning:false, isAbandon=false, error=rpc error: code = Unavailable desc = error reading from server: read tcp 192.168.123.69:59413->115.190.43.83:9848: wsarecv: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+2026-03-13T10:39:07.177+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:07.177+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:07.177+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:07.180+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 17 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:08.881+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:08.881+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:08.881+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:08.883+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 18 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:10.683+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:10.683+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:10.683+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:10.686+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 19 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:12.113+0800	ERROR	rpc/rpc_client.go:630	Send request fail, request=ConfigBatchListenRequest, body={"requestId":"","group":"","dataId":"","tenant":"","module":"config","listen":true,"configListenContexts":[{"group":"dev","md5":"1e308936a86c1687ebd8ddd8519c64d4","dataId":"order","tenant":""}]}, retryTimes=0, error=client not connected, current status:UNHEALTHY
+github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc.(*RpcClient).Request
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/common/remote/rpc/rpc_client.go:592
+github.com/nacos-group/nacos-sdk-go/v2/clients/config_client.(*ConfigProxy).requestProxy
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/clients/config_client/config_proxy.go:63
+github.com/nacos-group/nacos-sdk-go/v2/clients/config_client.(*ConfigClient).executeConfigListen
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/clients/config_client/config_client.go:439
+github.com/nacos-group/nacos-sdk-go/v2/clients/config_client.(*ConfigClient).startInternal.func1
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/clients/config_client/config_client.go:416
+runtime.goexit
+	D:/gowork/pkg/mod/golang.org/toolchain@v0.0.1-go1.24.10.windows-amd64/src/runtime/asm_amd64.s:1700
+2026-03-13T10:39:12.213+0800	ERROR	rpc/rpc_client.go:630	Send request fail, request=ConfigBatchListenRequest, body={"requestId":"","group":"","dataId":"","tenant":"","module":"config","listen":true,"configListenContexts":[{"group":"dev","md5":"1e308936a86c1687ebd8ddd8519c64d4","dataId":"order","tenant":""}]}, retryTimes=1, error=client not connected, current status:UNHEALTHY
+github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc.(*RpcClient).Request
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/common/remote/rpc/rpc_client.go:592
+github.com/nacos-group/nacos-sdk-go/v2/clients/config_client.(*ConfigProxy).requestProxy
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/clients/config_client/config_proxy.go:63
+github.com/nacos-group/nacos-sdk-go/v2/clients/config_client.(*ConfigClient).executeConfigListen
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/clients/config_client/config_client.go:439
+github.com/nacos-group/nacos-sdk-go/v2/clients/config_client.(*ConfigClient).startInternal.func1
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/clients/config_client/config_client.go:416
+runtime.goexit
+	D:/gowork/pkg/mod/golang.org/toolchain@v0.0.1-go1.24.10.windows-amd64/src/runtime/asm_amd64.s:1700
+2026-03-13T10:39:12.314+0800	ERROR	rpc/rpc_client.go:630	Send request fail, request=ConfigBatchListenRequest, body={"requestId":"","group":"","dataId":"","tenant":"","module":"config","listen":true,"configListenContexts":[{"group":"dev","md5":"1e308936a86c1687ebd8ddd8519c64d4","dataId":"order","tenant":""}]}, retryTimes=2, error=client not connected, current status:UNHEALTHY
+github.com/nacos-group/nacos-sdk-go/v2/common/remote/rpc.(*RpcClient).Request
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/common/remote/rpc/rpc_client.go:592
+github.com/nacos-group/nacos-sdk-go/v2/clients/config_client.(*ConfigProxy).requestProxy
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/clients/config_client/config_proxy.go:63
+github.com/nacos-group/nacos-sdk-go/v2/clients/config_client.(*ConfigClient).executeConfigListen
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/clients/config_client/config_client.go:439
+github.com/nacos-group/nacos-sdk-go/v2/clients/config_client.(*ConfigClient).startInternal.func1
+	D:/gowork/pkg/mod/github.com/nacos-group/nacos-sdk-go/v2@v2.3.5/clients/config_client/config_client.go:416
+runtime.goexit
+	D:/gowork/pkg/mod/golang.org/toolchain@v0.0.1-go1.24.10.windows-amd64/src/runtime/asm_amd64.s:1700
+2026-03-13T10:39:12.414+0800	WARN	config_client/config_client.go:441	ConfigBatchListenRequest failure, err:client not connected, current status:UNHEALTHY
+2026-03-13T10:39:12.586+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:12.586+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:12.586+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:12.589+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 20 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:14.589+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:14.589+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:14.589+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:14.592+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 21 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:16.692+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:16.692+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:16.692+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:16.695+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 22 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:18.895+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:18.895+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:18.895+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:18.898+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 23 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:21.198+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:21.198+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:21.198+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:21.202+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 24 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:23.602+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:23.602+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:23.602+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:23.604+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 25 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:26.104+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:26.104+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:26.104+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:26.109+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 26 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:28.709+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:28.709+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:28.709+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:28.712+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 27 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:31.413+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:31.413+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:31.413+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:31.416+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 28 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:34.217+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:34.217+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:34.217+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:34.219+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 29 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:37.120+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:37.120+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:37.120+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:37.122+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 30 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:40.123+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:40.123+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:40.123+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:40.126+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 31 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:43.227+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:43.227+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:43.227+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:43.230+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 32 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:46.430+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:46.430+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:46.430+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:46.433+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 33 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:49.734+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:49.734+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:49.734+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:49.738+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 34 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:53.138+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:53.138+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:53.138+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:53.141+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 35 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:39:56.641+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:39:56.641+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:39:56.641+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:39:56.643+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 36 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:00.244+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:00.244+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:00.244+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:00.248+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 37 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:03.948+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:03.948+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:03.948+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:03.952+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 38 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:07.753+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:07.753+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:07.753+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:07.757+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 39 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:11.657+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:11.657+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:11.657+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:11.661+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 40 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:15.661+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:15.661+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:15.661+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:15.667+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 41 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:19.767+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:19.767+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:19.767+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:19.770+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 42 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:23.970+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:23.970+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:23.970+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:23.973+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 43 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:28.274+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:28.274+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:28.274+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:28.276+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 44 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:32.677+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:32.677+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:32.677+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:32.680+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 45 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:37.181+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:37.181+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:37.181+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:37.184+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 46 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:41.784+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:41.784+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:41.784+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:41.786+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 47 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:46.487+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:46.487+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:46.487+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:46.489+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 48 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:51.290+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:51.290+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:51.290+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:51.292+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 49 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:40:56.193+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:40:56.193+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:40:56.193+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:40:56.195+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 50 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:41:01.195+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:41:01.195+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:41:01.195+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:41:01.199+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 51 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:41:06.200+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:41:06.200+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:41:06.200+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:41:06.204+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 52 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:41:11.204+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:41:11.204+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:41:11.204+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:41:11.206+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 53 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:41:16.207+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:41:16.207+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:41:16.207+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:41:16.210+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 54 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:41:21.210+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:41:21.210+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:41:21.210+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:41:21.214+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 55 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:41:26.215+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:41:26.215+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:41:26.215+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:41:26.219+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 56 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:41:31.220+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:41:31.220+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:41:31.220+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:41:31.222+0800	WARN	rpc/rpc_client.go:458	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 fail to connect server, after trying 57 times, last try server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, error=server check request failed , err:rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp 115.190.43.83:9848: connectex: A socket operation was attempted to an unreachable host."
+2026-03-13T10:41:36.223+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:41:36.223+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:41:36.223+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:41:36.495+0800	INFO	rpc/rpc_client.go:440	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 success to connect a server {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, connectionId=1773369696047_116.147.252.189_45698
+2026-03-13T10:41:36.495+0800	INFO	rpc/rpc_client.go:444	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 abandon prev connection, server is {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}, connectionId is 1773368346300_39.144.152.172_46000
+2026-03-13T10:41:36.495+0800	INFO	rpc/rpc_client.go:487	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 notify disconnected event to listeners , connectionId=1773369696047_116.147.252.189_45698
+2026-03-13T10:41:36.495+0800	INFO	config_client/config_connection_event_listener.go:45	[ConfigConnectionEventListener] disconnect from config server for taskId: 0
+2026-03-13T10:41:36.496+0800	INFO	rpc/rpc_client.go:487	config-0-5eef5393-6b78-4932-bd98-90e16d237b30 notify connected event to listeners , connectionId=1773369696047_116.147.252.189_45698
+2026-03-13T10:41:36.496+0800	INFO	config_client/config_connection_event_listener.go:38	[ConfigConnectionEventListener] connect to config server for taskId: 0
+2026-03-13T10:51:25.390+0800	WARN	cache/disk_cache.go:193	read Config Content failed. cause file doesn't exist, file path: ./nacos/cache\config\order@@dev@@_failover.
+2026-03-13T10:51:25.416+0800	INFO	rpc/rpc_client.go:157	init rpc client for name %!(EXTRA string=config-0-c651c2af-cbdc-42f3-b17c-70dc11ba2718)
+2026-03-13T10:51:25.416+0800	INFO	rpc/rpc_client.go:166	get app conn labels from client config map[] 
+2026-03-13T10:51:25.416+0800	INFO	rpc/rpc_client.go:168	get app conn labels from env map[] 
+2026-03-13T10:51:25.416+0800	INFO	rpc/rpc_client.go:171	final app conn labels : map[] 
+2026-03-13T10:51:25.416+0800	INFO	rpc/rpc_client.go:327	[RpcClient.Start] config-0-c651c2af-cbdc-42f3-b17c-70dc11ba2718 try to connect to server on start up, server: {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}
+2026-03-13T10:51:25.417+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:51:25.417+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:51:25.417+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:51:25.438+0800	INFO	util/common.go:96	Local IP:172.20.32.1
+2026-03-13T10:51:25.706+0800	INFO	rpc/rpc_client.go:337	config-0-c651c2af-cbdc-42f3-b17c-70dc11ba2718 success to connect to server {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848} on start up, connectionId=1773370285196_116.147.252.189_23412
+2026-03-13T10:51:25.706+0800	INFO	rpc/rpc_client.go:487	config-0-c651c2af-cbdc-42f3-b17c-70dc11ba2718 notify connected event to listeners , connectionId=1773370285196_116.147.252.189_23412
+2026-03-13T10:51:25.706+0800	INFO	config_client/config_connection_event_listener.go:38	[ConfigConnectionEventListener] connect to config server for taskId: 0
+2026-03-13T10:51:25.780+0800	WARN	cache/disk_cache.go:155	read cache file Config Encrypted Data Key failed. cause file doesn't exist, file path: ./nacos/cache\config\encrypted-data-key\order@@dev@@.: file not exist
+2026-03-13T10:51:32.610+0800	WARN	cache/disk_cache.go:193	read Config Content failed. cause file doesn't exist, file path: ./nacos/cache\config\order@@dev@@_failover.
+2026-03-13T10:51:32.633+0800	INFO	rpc/rpc_client.go:157	init rpc client for name %!(EXTRA string=config-0-b2803f96-de79-42b6-9fd5-21a57b4de619)
+2026-03-13T10:51:32.633+0800	INFO	rpc/rpc_client.go:166	get app conn labels from client config map[] 
+2026-03-13T10:51:32.633+0800	INFO	rpc/rpc_client.go:168	get app conn labels from env map[] 
+2026-03-13T10:51:32.633+0800	INFO	rpc/rpc_client.go:171	final app conn labels : map[] 
+2026-03-13T10:51:32.633+0800	INFO	rpc/rpc_client.go:327	[RpcClient.Start] config-0-b2803f96-de79-42b6-9fd5-21a57b4de619 try to connect to server on start up, server: {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848}
+2026-03-13T10:51:32.633+0800	INFO	rpc/grpc_client.go:175	check tls config %!(EXTRA *constant.TLSConfig=&{false false false    })
+2026-03-13T10:51:32.633+0800	INFO	rpc/grpc_client.go:180	try to get tls config from env
+2026-03-13T10:51:32.633+0800	INFO	rpc/grpc_client.go:189	 tls config from env is not enable
+2026-03-13T10:51:32.658+0800	INFO	util/common.go:96	Local IP:172.20.32.1
+2026-03-13T10:51:32.914+0800	INFO	rpc/rpc_client.go:337	config-0-b2803f96-de79-42b6-9fd5-21a57b4de619 success to connect to server {serverIp:115.190.43.83 serverPort:8848 serverGrpcPort:9848} on start up, connectionId=1773370292402_116.147.252.189_23413
+2026-03-13T10:51:32.914+0800	INFO	rpc/rpc_client.go:487	config-0-b2803f96-de79-42b6-9fd5-21a57b4de619 notify connected event to listeners , connectionId=1773370292402_116.147.252.189_23413
+2026-03-13T10:51:32.915+0800	INFO	config_client/config_connection_event_listener.go:38	[ConfigConnectionEventListener] connect to config server for taskId: 0
+2026-03-13T10:51:32.982+0800	WARN	cache/disk_cache.go:155	read cache file Config Encrypted Data Key failed. cause file doesn't exist, file path: ./nacos/cache\config\encrypted-data-key\order@@dev@@.: file not exist
