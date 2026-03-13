@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秒杀订单系统 - 数据库ER图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .er-diagram {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow-x: auto;
+        }
+        
+        .tables-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .table-card {
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .table-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .table-type {
+            font-size: 0.75em;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        
+        .table-body {
+            background: white;
+        }
+        
+        .field-row {
+            padding: 10px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .field-row:hover {
+            background: #f8f9ff;
+        }
+        
+        .field-row:last-child {
+            border-bottom: none;
+        }
+        
+        .field-key {
+            width: 35px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .pk { color: #e74c3c; }
+        .fk { color: #3498db; }
+        .uk { color: #f39c12; }
+        
+        .field-name {
+            flex: 1;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .field-type {
+            width: 150px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        .field-comment {
+            width: 200px;
+            color: #95a5a6;
+            font-size: 0.85em;
+            text-align: right;
+        }
+        
+        .field-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            margin-left: 8px;
+        }
+        
+        .badge-nn {
+            background: #fee;
+            color: #e74c3c;
+        }
+        
+        .badge-ai {
+            background: #e8f5e9;
+            color: #27ae60;
+        }
+        
+        .relations-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 3px solid #e0e0e0;
+        }
+        
+        .relations-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .relation-item {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        
+        .relation-item strong {
+            color: #667eea;
+        }
+        
+        .legend {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-badge {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .legend-pk { background: #e74c3c; }
+        .legend-fk { background: #3498db; }
+        .legend-uk { background: #f39c12; }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏪 秒杀活动电商订单系统 - 数据库ER图</h1>
+        
+        <div class="er-diagram">
+            <!-- 统计信息 -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">11</div>
+                    <div class="stat-label">数据表</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">75+</div>
+                    <div class="stat-label">字段总数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">外键关系</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">索引</div>
+                </div>
+            </div>
+            
+            <!-- 图例 -->
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-badge legend-pk"></span>
+                    <span><strong>PK</strong> 主键</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-badge legend-fk"></span>
+                    <span><strong>FK</strong> 外键</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-badge legend-uk"></span>
+                    <span><strong>UK</strong> 唯一键</span>
+                </div>
+                <div class="legend-item">
+                    <span class="badge-nn">NN</span>
+                    <span> NOT NULL</span>
+                </div>
+                <div class="legend-item">
+                    <span class="badge-ai">AI</span>
+                    <span> AUTO_INCREMENT</span>
+                </div>
+            </div>
+            
+            <button class="download-btn" onclick="window.print()">📄 打印/导出PDF</button>
+            
+            <!-- 表结构展示 -->
+            <div class="tables-container">
+                <!-- 1. 用户表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>user</span>
+                        <span class="table-type">用户管理</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">用户ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key uk">UK</div>
+                            <div class="field-name">username</div>
+                            <div class="field-type">VARCHAR(50)</div>
+                            <div class="field-comment">用户名</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">password</div>
+                            <div class="field-type">VARCHAR(255)</div>
+                            <div class="field-comment">密码（加密）</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key uk">UK</div>
+                            <div class="field-name">phone</div>
+                            <div class="field-type">VARCHAR(20)</div>
+                            <div class="field-comment">手机号</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key uk">UK</div>
+                            <div class="field-name">email</div>
+                            <div class="field-type">VARCHAR(100)</div>
+                            <div class="field-comment">邮箱</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">nickname</div>
+                            <div class="field-type">VARCHAR(50)</div>
+                            <div class="field-comment">昵称</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">avatar</div>
+                            <div class="field-type">VARCHAR(255)</div>
+                            <div class="field-comment">头像URL</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">status</div>
+                            <div class="field-type">TINYINT</div>
+                            <div class="field-comment">状态: 0-禁用 1-正常</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">deleted_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">删除时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 商品表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>product</span>
+                        <span class="table-type">商品管理</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">商品ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">product_name</div>
+                            <div class="field-type">VARCHAR(200)</div>
+                            <div class="field-comment">商品名称</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key uk">UK</div>
+                            <div class="field-name">product_code</div>
+                            <div class="field-type">VARCHAR(50)</div>
+                            <div class="field-comment">商品编码</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">category_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">分类ID</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">brand</div>
+                            <div class="field-type">VARCHAR(100)</div>
+                            <div class="field-comment">品牌</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">main_image</div>
+                            <div class="field-type">VARCHAR(255)</div>
+                            <div class="field-comment">主图URL</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">description</div>
+                            <div class="field-type">TEXT</div>
+                            <div class="field-comment">商品描述</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">price</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">商品价格</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">original_price</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">原价</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">stock</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">库存数量</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">sales</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">销量</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">status</div>
+                            <div class="field-type">TINYINT</div>
+                            <div class="field-comment">状态: 0-下架 1-上架</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">deleted_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">删除时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 秒杀活动表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>seckill_activity</span>
+                        <span class="table-type">秒杀核心</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">活动ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">activity_name</div>
+                            <div class="field-type">VARCHAR(100)</div>
+                            <div class="field-comment">活动名称</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key uk">UK</div>
+                            <div class="field-name">activity_code</div>
+                            <div class="field-type">VARCHAR(50)</div>
+                            <div class="field-comment">活动编码</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">start_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">开始时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">end_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">结束时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">description</div>
+                            <div class="field-type">VARCHAR(500)</div>
+                            <div class="field-comment">活动描述</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">status</div>
+                            <div class="field-type">TINYINT</div>
+                            <div class="field-comment">状态: 0-未开始 1-进行中 2-已结束</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">deleted_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">删除时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. 秒杀商品关联表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>seckill_product</span>
+                        <span class="table-type">秒杀核心</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">activity_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">活动ID → seckill_activity</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">product_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">商品ID → product</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">seckill_price</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">秒杀价格</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">seckill_stock</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">秒杀库存总量</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">limit_per_user</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">每用户限购数量</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">sort_order</div>
+                            <div class="field-type">INT</div>
+                            <div class="field-comment">排序权重</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">status</div>
+                            <div class="field-type">TINYINT</div>
+                            <div class="field-comment">状态: 0-禁用 1-启用</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. 秒杀库存表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>seckill_stock</span>
+                        <span class="table-type">秒杀核心</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">库存ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key uk">UK,FK</div>
+                            <div class="field-name">seckill_product_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">秒杀商品ID → seckill_product</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">stock</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">当前库存</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">initial_stock</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">初始库存</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">locked_stock</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">锁定库存（已下单未支付）</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">version</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">乐观锁版本号</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. 订单主表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>order_info</span>
+                        <span class="table-type">订单交易</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">订单ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key uk">UK</div>
+                            <div class="field-name">order_no</div>
+                            <div class="field-type">VARCHAR(64)</div>
+                            <div class="field-comment">订单编号</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">user_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">用户ID → user</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">activity_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">秒杀活动ID → seckill_activity</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">total_amount</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">订单总金额</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">payment_amount</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">实付金额</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">discount_amount</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">优惠金额</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">status</div>
+                            <div class="field-type">TINYINT</div>
+                            <div class="field-comment">0-待支付 1-已支付 2-已发货 3-已完成 4-已取消 5-已退款</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">payment_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">支付时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">delivery_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">发货时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">receive_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">收货时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">cancel_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">取消时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">expire_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">订单过期时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">receiver_name</div>
+                            <div class="field-type">VARCHAR(50)</div>
+                            <div class="field-comment">收货人姓名</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">receiver_phone</div>
+                            <div class="field-type">VARCHAR(20)</div>
+                            <div class="field-comment">收货人电话</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">receiver_address</div>
+                            <div class="field-type">VARCHAR(255)</div>
+                            <div class="field-comment">收货地址</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">remark</div>
+                            <div class="field-type">VARCHAR(500)</div>
+                            <div class="field-comment">订单备注</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">deleted_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">删除时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. 订单商品明细表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>order_item</span>
+                        <span class="table-type">订单交易</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">订单商品ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">order_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">订单ID → order_info</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">product_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">商品ID → product</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">seckill_product_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">秒杀商品ID → seckill_product</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">product_name</div>
+                            <div class="field-type">VARCHAR(200)</div>
+                            <div class="field-comment">商品名称</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">product_image</div>
+                            <div class="field-type">VARCHAR(255)</div>
+                            <div class="field-comment">商品图片</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">price</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">商品单价</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">quantity</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">购买数量</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">total_amount</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">小计金额</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. 支付记录表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>payment</span>
+                        <span class="table-type">订单交易</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">支付ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key uk">UK</div>
+                            <div class="field-name">payment_no</div>
+                            <div class="field-type">VARCHAR(64)</div>
+                            <div class="field-comment">支付流水号</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">order_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">订单ID → order_info</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">user_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">用户ID → user</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">payment_method</div>
+                            <div class="field-type">TINYINT</div>
+                            <div class="field-comment">支付方式: 1-微信 2-支付宝 3-银行卡</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">payment_amount</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">支付金额</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">status</div>
+                            <div class="field-type">TINYINT</div>
+                            <div class="field-comment">支付状态: 0-待支付 1-成功 2-失败 3-已退款</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">trade_no</div>
+                            <div class="field-type">VARCHAR(100)</div>
+                            <div class="field-comment">第三方交易号</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">payment_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">支付时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">callback_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">回调时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">callback_content</div>
+                            <div class="field-type">TEXT</div>
+                            <div class="field-comment">回调内容</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. 退款记录表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>refund</span>
+                        <span class="table-type">订单交易</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">退款ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key uk">UK</div>
+                            <div class="field-name">refund_no</div>
+                            <div class="field-type">VARCHAR(64)</div>
+                            <div class="field-comment">退款流水号</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">order_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">订单ID → order_info</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">order_item_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">订单商品ID → order_item</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">user_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">用户ID → user</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">payment_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">支付ID → payment</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">refund_amount</div>
+                            <div class="field-type">DECIMAL(10,2)</div>
+                            <div class="field-comment">退款金额</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">refund_reason</div>
+                            <div class="field-type">VARCHAR(500)</div>
+                            <div class="field-comment">退款原因</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">status</div>
+                            <div class="field-type">TINYINT</div>
+                            <div class="field-comment">退款状态: 0-待处理 1-成功 2-失败</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">refund_time</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">退款时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. 用户购买限制表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>user_purchase_limit</span>
+                        <span class="table-type">风控日志</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK,UK</div>
+                            <div class="field-name">user_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">用户ID → user</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK,UK</div>
+                            <div class="field-name">activity_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">活动ID → seckill_activity</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK,UK</div>
+                            <div class="field-name">product_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">商品ID → product</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">purchase_count</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">已购买数量</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">updated_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">更新时间</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. 库存操作日志表 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <span>stock_log</span>
+                        <span class="table-type">风控日志</span>
+                    </div>
+                    <div class="table-body">
+                        <div class="field-row">
+                            <div class="field-key pk">PK</div>
+                            <div class="field-name">id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">日志ID</div>
+                            <span class="badge-ai">AI</span>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">seckill_stock_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">秒杀库存ID → seckill_stock</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">order_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">订单ID → order_info</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key fk">FK</div>
+                            <div class="field-name">user_id</div>
+                            <div class="field-type">BIGINT UNSIGNED</div>
+                            <div class="field-comment">用户ID → user</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">operation_type</div>
+                            <div class="field-type">TINYINT</div>
+                            <div class="field-comment">操作类型: 1-扣减 2-回滚 3-锁定 4-解锁</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">quantity</div>
+                            <div class="field-type">INT</div>
+                            <div class="field-comment">操作数量</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">before_stock</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">操作前库存</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">after_stock</div>
+                            <div class="field-type">INT UNSIGNED</div>
+                            <div class="field-comment">操作后库存</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">remark</div>
+                            <div class="field-type">VARCHAR(500)</div>
+                            <div class="field-comment">备注</div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field-key"></div>
+                            <div class="field-name">created_at</div>
+                            <div class="field-type">DATETIME</div>
+                            <div class="field-comment">创建时间</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 表关系说明 -->
+            <div class="relations-section">
+                <h2>🔗 表关系说明</h2>
+                
+                <div class="relation-item">
+                    <strong>用户 → 订单 → 支付 → 退款</strong><br>
+                    user.id → order_info.user_id → payment.user_id → refund.user_id<br>
+                    <small>一个用户可以有多个订单，每个订单可以有多次支付记录，每次支付可以发起退款</small>
+                </div>
+                
+                <div class="relation-item">
+                    <strong>活动 → 秒杀商品 → 库存</strong><br>
+                    seckill_activity.id → seckill_product.activity_id → seckill_stock.seckill_product_id<br>
+                    <small>一个活动包含多个秒杀商品，每个秒杀商品有独立的库存管理</small>
+                </div>
+                
+                <div class="relation-item">
+                    <strong>商品 → 秒杀商品 → 订单商品</strong><br>
+                    product.id → seckill_product.product_id → order_item.seckill_product_id<br>
+                    <small>商品参与秒杀活动，订单商品记录购买详情</small>
+                </div>
+                
+                <div class="relation-item">
+                    <strong>用户购买限制（限购控制）</strong><br>
+                    UNIQUE KEY (user_id, activity_id, product_id)<br>
+                    <small>唯一索引确保同一用户在同一活动中对同一商品只能购买限定次数</small>
+                </div>
+                
+                <div class="relation-item">
+                    <strong>库存操作日志（审计追踪）</strong><br>
+                    seckill_stock.id → stock_log.seckill_stock_id<br>
+                    <small>记录所有库存变更操作，支持问题排查和数据恢复</small>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px; color: white; opacity: 0.8;">
+            <p>数据库: p2308a @ 115.190.43.83:3306 | 引擎: InnoDB | 字符集: utf8mb4</p>
+            <p>生成时间: 2026-03-13 | 设计: 秒杀活动电商订单系统</p>
+        </div>
+    </div>
+</body>
+</html>

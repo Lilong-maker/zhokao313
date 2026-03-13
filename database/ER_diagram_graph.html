@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秒杀订单系统 - ER图</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #1a1a2e;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            padding: 15px 30px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        #header h1 {
+            color: #e94560;
+            font-size: 1.5em;
+        }
+        #controls {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .btn:hover { background: #ff6b6b; transform: translateY(-2px); }
+        #cy { 
+            width: 100vw; 
+            height: calc(100vh - 70px); 
+            margin-top: 70px;
+        }
+        #legend {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(22, 33, 62, 0.95);
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            font-size: 13px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        #legend h3 { margin-bottom: 10px; color: #e94560; }
+        .legend-item { display: flex; align-items: center; gap: 8px; margin: 5px 0; }
+        .legend-color { width: 20px; height: 12px; border-radius: 3px; }
+        .user-table { background: #3498db; }
+        .product-table { background: #2ecc71; }
+        .seckill-table { background: #e74c3c; }
+        .order-table { background: #f39c12; }
+        .payment-table { background: #9b59b6; }
+        .log-table { background: #1abc9c; }
+        
+        #tooltip {
+            position: fixed;
+            background: rgba(22, 33, 62, 0.98);
+            border: 2px solid #e94560;
+            border-radius: 8px;
+            padding: 15px;
+            color: white;
+            font-size: 13px;
+            max-width: 400px;
+            z-index: 2000;
+            display: none;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        #tooltip h4 { 
+            color: #e94560; 
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        #tooltip .field {
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        #tooltip .field:last-child { border-bottom: none; }
+        #tooltip .pk { color: #e74c3c; font-weight: bold; }
+        #tooltip .fk { color: #3498db; }
+        #tooltip .uk { color: #f39c12; }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>🏪 秒杀活动电商订单系统 - ER图</h1>
+        <div id="controls">
+            <button class="btn" onclick="cy.fit()">📐 适应屏幕</button>
+            <button class="btn" onclick="cy.zoom(1.5)">🔍 放大</button>
+            <button class="btn" onclick="cy.zoom(0.67)">🔍 缩小</button>
+            <button class="btn" onclick="window.print()">📄 打印</button>
+        </div>
+    </div>
+    
+    <div id="cy"></div>
+    
+    <div id="legend">
+        <h3>📊 图例</h3>
+        <div class="legend-item"><div class="legend-color user-table"></div> 用户管理</div>
+        <div class="legend-item"><div class="legend-color product-table"></div> 商品管理</div>
+        <div class="legend-item"><div class="legend-color seckill-table"></div> 秒杀核心</div>
+        <div class="legend-item"><div class="legend-color order-table"></div> 订单交易</div>
+        <div class="legend-item"><div class="legend-color payment-table"></div> 支付退款</div>
+        <div class="legend-item"><div class="legend-color log-table"></div> 风控日志</div>
+    </div>
+    
+    <div id="tooltip"></div>
+
+    <script>
+        // 表定义 - 包含所有字段
+        const tables = {
+            user: {
+                name: 'user',
+                label: '用户表\n(user)',
+                color: '#3498db',
+                category: '用户管理',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: '用户ID' },
+                    { name: 'username', type: 'VARCHAR(50)', key: 'UK', comment: '用户名' },
+                    { name: 'password', type: 'VARCHAR(255)', key: '', comment: '密码' },
+                    { name: 'phone', type: 'VARCHAR(20)', key: 'UK', comment: '手机号' },
+                    { name: 'email', type: 'VARCHAR(100)', key: 'UK', comment: '邮箱' },
+                    { name: 'nickname', type: 'VARCHAR(50)', key: '', comment: '昵称' },
+                    { name: 'avatar', type: 'VARCHAR(255)', key: '', comment: '头像' },
+                    { name: 'status', type: 'TINYINT', key: '', comment: '状态' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' },
+                    { name: 'deleted_at', type: 'DATETIME', key: '', comment: '删除时间' }
+                ]
+            },
+            product: {
+                name: 'product',
+                label: '商品表\n(product)',
+                color: '#2ecc71',
+                category: '商品管理',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: '商品ID' },
+                    { name: 'product_name', type: 'VARCHAR(200)', key: '', comment: '商品名称' },
+                    { name: 'product_code', type: 'VARCHAR(50)', key: 'UK', comment: '商品编码' },
+                    { name: 'category_id', type: 'BIGINT', key: '', comment: '分类ID' },
+                    { name: 'brand', type: 'VARCHAR(100)', key: '', comment: '品牌' },
+                    { name: 'main_image', type: 'VARCHAR(255)', key: '', comment: '主图' },
+                    { name: 'description', type: 'TEXT', key: '', comment: '描述' },
+                    { name: 'price', type: 'DECIMAL(10,2)', key: '', comment: '价格' },
+                    { name: 'original_price', type: 'DECIMAL(10,2)', key: '', comment: '原价' },
+                    { name: 'stock', type: 'INT', key: '', comment: '库存' },
+                    { name: 'sales', type: 'INT', key: '', comment: '销量' },
+                    { name: 'status', type: 'TINYINT', key: '', comment: '状态' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' },
+                    { name: 'deleted_at', type: 'DATETIME', key: '', comment: '删除时间' }
+                ]
+            },
+            seckill_activity: {
+                name: 'seckill_activity',
+                label: '秒杀活动表\n(seckill_activity)',
+                color: '#e74c3c',
+                category: '秒杀核心',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: '活动ID' },
+                    { name: 'activity_name', type: 'VARCHAR(100)', key: '', comment: '活动名称' },
+                    { name: 'activity_code', type: 'VARCHAR(50)', key: 'UK', comment: '活动编码' },
+                    { name: 'start_time', type: 'DATETIME', key: '', comment: '开始时间' },
+                    { name: 'end_time', type: 'DATETIME', key: '', comment: '结束时间' },
+                    { name: 'description', type: 'VARCHAR(500)', key: '', comment: '描述' },
+                    { name: 'status', type: 'TINYINT', key: '', comment: '状态' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' },
+                    { name: 'deleted_at', type: 'DATETIME', key: '', comment: '删除时间' }
+                ]
+            },
+            seckill_product: {
+                name: 'seckill_product',
+                label: '秒杀商品表\n(seckill_product)',
+                color: '#e74c3c',
+                category: '秒杀核心',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: 'ID' },
+                    { name: 'activity_id', type: 'BIGINT', key: 'FK', comment: '活动ID' },
+                    { name: 'product_id', type: 'BIGINT', key: 'FK', comment: '商品ID' },
+                    { name: 'seckill_price', type: 'DECIMAL(10,2)', key: '', comment: '秒杀价' },
+                    { name: 'seckill_stock', type: 'INT', key: '', comment: '库存总量' },
+                    { name: 'limit_per_user', type: 'INT', key: '', comment: '限购数量' },
+                    { name: 'sort_order', type: 'INT', key: '', comment: '排序' },
+                    { name: 'status', type: 'TINYINT', key: '', comment: '状态' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' }
+                ]
+            },
+            seckill_stock: {
+                name: 'seckill_stock',
+                label: '秒杀库存表\n(seckill_stock)',
+                color: '#e74c3c',
+                category: '秒杀核心',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: '库存ID' },
+                    { name: 'seckill_product_id', type: 'BIGINT', key: 'FK,UK', comment: '秒杀商品ID' },
+                    { name: 'stock', type: 'INT', key: '', comment: '当前库存' },
+                    { name: 'initial_stock', type: 'INT', key: '', comment: '初始库存' },
+                    { name: 'locked_stock', type: 'INT', key: '', comment: '锁定库存' },
+                    { name: 'version', type: 'INT', key: '', comment: '乐观锁版本' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' }
+                ]
+            },
+            order_info: {
+                name: 'order_info',
+                label: '订单主表\n(order_info)',
+                color: '#f39c12',
+                category: '订单交易',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: '订单ID' },
+                    { name: 'order_no', type: 'VARCHAR(64)', key: 'UK', comment: '订单编号' },
+                    { name: 'user_id', type: 'BIGINT', key: 'FK', comment: '用户ID' },
+                    { name: 'activity_id', type: 'BIGINT', key: 'FK', comment: '活动ID' },
+                    { name: 'total_amount', type: 'DECIMAL(10,2)', key: '', comment: '总金额' },
+                    { name: 'payment_amount', type: 'DECIMAL(10,2)', key: '', comment: '实付金额' },
+                    { name: 'discount_amount', type: 'DECIMAL(10,2)', key: '', comment: '优惠金额' },
+                    { name: 'status', type: 'TINYINT', key: '', comment: '订单状态' },
+                    { name: 'payment_time', type: 'DATETIME', key: '', comment: '支付时间' },
+                    { name: 'delivery_time', type: 'DATETIME', key: '', comment: '发货时间' },
+                    { name: 'receive_time', type: 'DATETIME', key: '', comment: '收货时间' },
+                    { name: 'cancel_time', type: 'DATETIME', key: '', comment: '取消时间' },
+                    { name: 'expire_time', type: 'DATETIME', key: '', comment: '过期时间' },
+                    { name: 'receiver_name', type: 'VARCHAR(50)', key: '', comment: '收货人' },
+                    { name: 'receiver_phone', type: 'VARCHAR(20)', key: '', comment: '收货电话' },
+                    { name: 'receiver_address', type: 'VARCHAR(255)', key: '', comment: '收货地址' },
+                    { name: 'remark', type: 'VARCHAR(500)', key: '', comment: '备注' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' },
+                    { name: 'deleted_at', type: 'DATETIME', key: '', comment: '删除时间' }
+                ]
+            },
+            order_item: {
+                name: 'order_item',
+                label: '订单商品表\n(order_item)',
+                color: '#f39c12',
+                category: '订单交易',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: '订单商品ID' },
+                    { name: 'order_id', type: 'BIGINT', key: 'FK', comment: '订单ID' },
+                    { name: 'product_id', type: 'BIGINT', key: 'FK', comment: '商品ID' },
+                    { name: 'seckill_product_id', type: 'BIGINT', key: 'FK', comment: '秒杀商品ID' },
+                    { name: 'product_name', type: 'VARCHAR(200)', key: '', comment: '商品名称' },
+                    { name: 'product_image', type: 'VARCHAR(255)', key: '', comment: '商品图片' },
+                    { name: 'price', type: 'DECIMAL(10,2)', key: '', comment: '单价' },
+                    { name: 'quantity', type: 'INT', key: '', comment: '数量' },
+                    { name: 'total_amount', type: 'DECIMAL(10,2)', key: '', comment: '小计' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' }
+                ]
+            },
+            payment: {
+                name: 'payment',
+                label: '支付记录表\n(payment)',
+                color: '#9b59b6',
+                category: '支付退款',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: '支付ID' },
+                    { name: 'payment_no', type: 'VARCHAR(64)', key: 'UK', comment: '支付流水号' },
+                    { name: 'order_id', type: 'BIGINT', key: 'FK', comment: '订单ID' },
+                    { name: 'user_id', type: 'BIGINT', key: 'FK', comment: '用户ID' },
+                    { name: 'payment_method', type: 'TINYINT', key: '', comment: '支付方式' },
+                    { name: 'payment_amount', type: 'DECIMAL(10,2)', key: '', comment: '支付金额' },
+                    { name: 'status', type: 'TINYINT', key: '', comment: '支付状态' },
+                    { name: 'trade_no', type: 'VARCHAR(100)', key: '', comment: '第三方交易号' },
+                    { name: 'payment_time', type: 'DATETIME', key: '', comment: '支付时间' },
+                    { name: 'callback_time', type: 'DATETIME', key: '', comment: '回调时间' },
+                    { name: 'callback_content', type: 'TEXT', key: '', comment: '回调内容' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' }
+                ]
+            },
+            refund: {
+                name: 'refund',
+                label: '退款记录表\n(refund)',
+                color: '#9b59b6',
+                category: '支付退款',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: '退款ID' },
+                    { name: 'refund_no', type: 'VARCHAR(64)', key: 'UK', comment: '退款流水号' },
+                    { name: 'order_id', type: 'BIGINT', key: 'FK', comment: '订单ID' },
+                    { name: 'order_item_id', type: 'BIGINT', key: 'FK', comment: '订单商品ID' },
+                    { name: 'user_id', type: 'BIGINT', key: 'FK', comment: '用户ID' },
+                    { name: 'payment_id', type: 'BIGINT', key: 'FK', comment: '支付ID' },
+                    { name: 'refund_amount', type: 'DECIMAL(10,2)', key: '', comment: '退款金额' },
+                    { name: 'refund_reason', type: 'VARCHAR(500)', key: '', comment: '退款原因' },
+                    { name: 'status', type: 'TINYINT', key: '', comment: '退款状态' },
+                    { name: 'refund_time', type: 'DATETIME', key: '', comment: '退款时间' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' }
+                ]
+            },
+            user_purchase_limit: {
+                name: 'user_purchase_limit',
+                label: '用户限购表\n(user_purchase_limit)',
+                color: '#1abc9c',
+                category: '风控日志',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: 'ID' },
+                    { name: 'user_id', type: 'BIGINT', key: 'FK,UK', comment: '用户ID' },
+                    { name: 'activity_id', type: 'BIGINT', key: 'FK,UK', comment: '活动ID' },
+                    { name: 'product_id', type: 'BIGINT', key: 'FK,UK', comment: '商品ID' },
+                    { name: 'purchase_count', type: 'INT', key: '', comment: '已购数量' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' },
+                    { name: 'updated_at', type: 'DATETIME', key: '', comment: '更新时间' }
+                ]
+            },
+            stock_log: {
+                name: 'stock_log',
+                label: '库存日志表\n(stock_log)',
+                color: '#1abc9c',
+                category: '风控日志',
+                fields: [
+                    { name: 'id', type: 'BIGINT', key: 'PK', comment: '日志ID' },
+                    { name: 'seckill_stock_id', type: 'BIGINT', key: 'FK', comment: '秒杀库存ID' },
+                    { name: 'order_id', type: 'BIGINT', key: 'FK', comment: '订单ID' },
+                    { name: 'user_id', type: 'BIGINT', key: 'FK', comment: '用户ID' },
+                    { name: 'operation_type', type: 'TINYINT', key: '', comment: '操作类型' },
+                    { name: 'quantity', type: 'INT', key: '', comment: '操作数量' },
+                    { name: 'before_stock', type: 'INT', key: '', comment: '操作前库存' },
+                    { name: 'after_stock', type: 'INT', key: '', comment: '操作后库存' },
+                    { name: 'remark', type: 'VARCHAR(500)', key: '', comment: '备注' },
+                    { name: 'created_at', type: 'DATETIME', key: '', comment: '创建时间' }
+                ]
+            }
+        };
+
+        // 外键关系定义
+        const edges = [
+            { source: 'seckill_product', target: 'seckill_activity', sourceField: 'activity_id', targetField: 'id', label: 'activity_id' },
+            { source: 'seckill_product', target: 'product', sourceField: 'product_id', targetField: 'id', label: 'product_id' },
+            { source: 'seckill_stock', target: 'seckill_product', sourceField: 'seckill_product_id', targetField: 'id', label: 'seckill_product_id' },
+            { source: 'order_info', target: 'user', sourceField: 'user_id', targetField: 'id', label: 'user_id' },
+            { source: 'order_info', target: 'seckill_activity', sourceField: 'activity_id', targetField: 'id', label: 'activity_id' },
+            { source: 'order_item', target: 'order_info', sourceField: 'order_id', targetField: 'id', label: 'order_id' },
+            { source: 'order_item', target: 'product', sourceField: 'product_id', targetField: 'id', label: 'product_id' },
+            { source: 'order_item', target: 'seckill_product', sourceField: 'seckill_product_id', targetField: 'id', label: 'seckill_product_id' },
+            { source: 'payment', target: 'order_info', sourceField: 'order_id', targetField: 'id', label: 'order_id' },
+            { source: 'payment', target: 'user', sourceField: 'user_id', targetField: 'id', label: 'user_id' },
+            { source: 'refund', target: 'order_info', sourceField: 'order_id', targetField: 'id', label: 'order_id' },
+            { source: 'refund', target: 'order_item', sourceField: 'order_item_id', targetField: 'id', label: 'order_item_id' },
+            { source: 'refund', target: 'user', sourceField: 'user_id', targetField: 'id', label: 'user_id' },
+            { source: 'refund', target: 'payment', sourceField: 'payment_id', targetField: 'id', label: 'payment_id' },
+            { source: 'user_purchase_limit', target: 'user', sourceField: 'user_id', targetField: 'id', label: 'user_id' },
+            { source: 'user_purchase_limit', target: 'seckill_activity', sourceField: 'activity_id', targetField: 'id', label: 'activity_id' },
+            { source: 'user_purchase_limit', target: 'product', sourceField: 'product_id', targetField: 'id', label: 'product_id' },
+            { source: 'stock_log', target: 'seckill_stock', sourceField: 'seckill_stock_id', targetField: 'id', label: 'seckill_stock_id' },
+            { source: 'stock_log', target: 'order_info', sourceField: 'order_id', targetField: 'id', label: 'order_id' },
+            { source: 'stock_log', target: 'user', sourceField: 'user_id', targetField: 'id', label: 'user_id' }
+        ];
+
+        // 布局位置（手动定义更好的布局）
+        const positions = {
+            user: { x: 0, y: 300 },
+            product: { x: 400, y: 0 },
+            seckill_activity: { x: 400, y: 300 },
+            seckill_product: { x: 400, y: 600 },
+            seckill_stock: { x: 400, y: 900 },
+            order_info: { x: 800, y: 300 },
+            order_item: { x: 1200, y: 300 },
+            payment: { x: 1200, y: 600 },
+            refund: { x: 1200, y: 900 },
+            user_purchase_limit: { x: 0, y: 600 },
+            stock_log: { x: 0, y: 900 }
+        };
+
+        // 构建节点
+        const nodes = [];
+        Object.keys(tables).forEach(tableName => {
+            const table = tables[tableName];
+            const pos = positions[tableName];
+            
+            // 构建字段列表HTML
+            let fieldsHtml = '';
+            table.fields.forEach(f => {
+                const keyClass = f.key === 'PK' ? 'pk' : (f.key === 'FK' ? 'fk' : (f.key === 'UK' ? 'uk' : ''));
+                fieldsHtml += `<div class="field"><span class="${keyClass}">${f.key}</span> ${f.name}: ${f.type} <span style="color:#888">(${f.comment})</span></div>`;
+            });
+            
+            nodes.push({
+                data: {
+                    id: tableName,
+                    label: table.label,
+                    color: table.color,
+                    category: table.category,
+                    fieldsHtml: fieldsHtml,
+                    fields: table.fields
+                },
+                position: pos
+            });
+        });
+
+        // 构建边
+        const edgesData = edges.map((e, i) => ({
+            data: {
+                id: 'e' + i,
+                source: e.source,
+                target: e.target,
+                label: e.label
+            }
+        }));
+
+        // 初始化Cytoscape
+        const cy = cytoscape({
+            container: document.getElementById('cy'),
+            elements: { nodes, edges: edgesData },
+            style: [
+                {
+                    selector: 'node',
+                    style: {
+                        'width': 180,
+                        'height': 60,
+                        'background-color': 'data(color)',
+                        'label': 'data(label)',
+                        'font-size': '12px',
+                        'color': '#fff',
+                        'text-valign': 'center',
+                        'text-halign': 'center',
+                        'font-weight': 'bold',
+                        'text-wrap': 'wrap',
+                        'shape': 'roundrectangle',
+                        'border-width': 3,
+                        'border-color': '#fff',
+                        'shadow-blur': 15,
+                        'shadow-color': 'rgba(0,0,0,0.5)',
+                        'shadow-offset-x': 3,
+                        'shadow-offset-y': 3
+                    }
+                },
+                {
+                    selector: 'node:selected',
+                    style: {
+                        'border-width': 5,
+                        'border-color': '#e94560',
+                        'shadow-blur': 25
+                    }
+                },
+                {
+                    selector: 'edge',
+                    style: {
+                        'width': 2,
+                        'line-color': '#5dade2',
+                        'target-arrow-color': '#5dade2',
+                        'target-arrow-shape': 'triangle',
+                        'curve-style': 'bezier',
+                        'arrow-scale': 1.2,
+                        'label': 'data(label)',
+                        'font-size': '10px',
+                        'color': '#fff',
+                        'text-rotation': 'autorotate',
+                        'text-margin-y': -10,
+                        'text-background-color': '#1a1a2e',
+                        'text-background-opacity': 1,
+                        'text-background-padding': '3px'
+                    }
+                },
+                {
+                    selector: 'edge:selected',
+                    style: {
+                        'width': 3,
+                        'line-color': '#e94560',
+                        'target-arrow-color': '#e94560'
+                    }
+                }
+            ],
+            layout: { name: 'preset' },
+            minZoom: 0.3,
+            maxZoom: 3,
+            wheelSensitivity: 0.3
+        });
+
+        // 点击节点显示详细信息
+        cy.on('tap', 'node', function(evt) {
+            const node = evt.target;
+            const tooltip = document.getElementById('tooltip');
+            const fields = node.data('fields');
+            const color = node.data('color');
+            const category = node.data('category');
+            
+            let html = `<h4 style="border-bottom: 2px solid ${color}; padding-bottom: 8px;">${node.data('label')}</h4>`;
+            html += `<div style="color: ${color}; margin-bottom: 10px;">${category}</div>`;
+            fields.forEach(f => {
+                const keyClass = f.key === 'PK' ? 'pk' : (f.key === 'FK' ? 'fk' : (f.key === 'UK' ? 'uk' : ''));
+                html += `<div class="field">`;
+                if (f.key) html += `<span class="${keyClass}">[${f.key}]</span> `;
+                html += `<strong>${f.name}</strong> : ${f.type}`;
+                if (f.comment) html += ` <span style="color:#888">- ${f.comment}</span>`;
+                html += `</div>`;
+            });
+            
+            tooltip.innerHTML = html;
+            tooltip.style.display = 'block';
+            tooltip.style.left = (evt.renderedPosition.x + 200) + 'px';
+            tooltip.style.top = (evt.renderedPosition.y + 100) + 'px';
+        });
+
+        // 点击空白处隐藏提示
+        cy.on('tap', function(evt) {
+            if (evt.target === cy) {
+                document.getElementById('tooltip').style.display = 'none';
+            }
+        });
+
+        // 适应屏幕
+        setTimeout(() => cy.fit(50), 100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./";
+
+// 增
+message OrderAddReq {
+  string name = 1;
+  fixed32 price = 2;
+  int64 num = 3;
+  int64 orderSn = 4;
+}
+
+message OrderAddResp {
+  string msg = 1;
+  int64 code = 2;
+}
+
+// 删
+message OrderDeleteReq {
+  int64 orderSn = 1;
+}
+
+message OrderDeleteResp {
+  string msg = 1;
+  int64 code = 2;
+}
+
+// 改
+message OrderUpdateReq {
+  int64 orderSn = 1;
+  string name = 2;
+  fixed32 price = 3;
+  int64 num = 4;
+}
+
+message OrderUpdateResp {
+  string msg = 1;
+  int64 code = 2;
+}
+
+// 查 - 单个
+message OrderGetReq {
+  int64 orderSn = 1;
+}
+
+message OrderGetResp {
+  string msg = 1;
+  int64 code = 2;
+  string name = 3;
+  fixed32 price = 4;
+  int64 num = 5;
+  int64 orderSn = 6;
+}
+
+// 查 - 列表
+message OrderListReq {
+  int32 page = 1;
+  int32 pageSize = 2;
+}
+
+message OrderListResp {
+  string msg = 1;
+  int64 code = 2;
+  repeated OrderInfo data = 3;
+  int64 total = 4;
+}
+
+message OrderInfo {
+  string name = 1;
+  fixed32 price = 2;
+  int64 num = 3;
+  int64 orderSn = 4;
+}
+
+service Order {
+  rpc OrderAdd(OrderAddReq) returns (OrderAddResp);
+  rpc OrderDelete(OrderDeleteReq) returns (OrderDeleteResp);
+  rpc OrderUpdate(OrderUpdateReq) returns (OrderUpdateResp);
+  rpc OrderGet(OrderGetReq) returns (OrderGetResp);
+  rpc OrderList(OrderListReq) returns (OrderListResp);
+}
